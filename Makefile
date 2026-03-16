@@ -2,7 +2,7 @@
 
 # Override with your Developer ID Application identity
 SIGNING_IDENTITY ?= Developer ID Application
-BUNDLE_ID := cc.gen4.cirrus-kv
+BUNDLE_ID := cc.digitalassistant.cirrus-kv
 INSTALL_DIR := $(HOME)/.local/bin
 
 build:
