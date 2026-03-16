@@ -19,7 +19,7 @@ func run() -> Int32 {
     switch command {
     case "get":
         guard args.count >= 2 else {
-            fputs("usage: icloud-kv get <key>\n", stderr)
+            fputs("usage: cirrus-kv get <key>\n", stderr)
             return 1
         }
         let key = args[1]
@@ -32,7 +32,7 @@ func run() -> Int32 {
 
     case "get-json":
         guard args.count >= 2 else {
-            fputs("usage: icloud-kv get-json <key>\n", stderr)
+            fputs("usage: cirrus-kv get-json <key>\n", stderr)
             return 1
         }
         let key = args[1]
@@ -47,7 +47,7 @@ func run() -> Int32 {
 
     case "set":
         guard args.count >= 3 else {
-            fputs("usage: icloud-kv set <key> <value>\n", stderr)
+            fputs("usage: cirrus-kv set <key> <value>\n", stderr)
             return 1
         }
         let key = args[1]
@@ -60,7 +60,7 @@ func run() -> Int32 {
 
     case "set-json":
         guard args.count >= 3 else {
-            fputs("usage: icloud-kv set-json <key> <json>\n", stderr)
+            fputs("usage: cirrus-kv set-json <key> <json>\n", stderr)
             return 1
         }
         let key = args[1]
@@ -73,7 +73,7 @@ func run() -> Int32 {
 
     case "delete":
         guard args.count >= 2 else {
-            fputs("usage: icloud-kv delete <key>\n", stderr)
+            fputs("usage: cirrus-kv delete <key>\n", stderr)
             return 1
         }
         store.delete(args[1])
@@ -102,7 +102,7 @@ func run() -> Int32 {
 
     case "watch":
         guard args.count >= 2 else {
-            fputs("usage: icloud-kv watch <key> [--timeout <seconds>]\n", stderr)
+            fputs("usage: cirrus-kv watch <key> [--timeout <seconds>]\n", stderr)
             return 1
         }
         let key = args[1]
@@ -120,7 +120,7 @@ func run() -> Int32 {
     case "cas":
         // Compare-and-swap: set key to new value only if current value matches expected
         guard args.count >= 4 else {
-            fputs("usage: icloud-kv cas <key> <expected> <new-value>\n", stderr)
+            fputs("usage: cirrus-kv cas <key> <expected> <new-value>\n", stderr)
             return 1
         }
         let key = args[1]
@@ -147,7 +147,7 @@ func run() -> Int32 {
         }
 
     case "version":
-        print("icloud-kv 0.1.0")
+        print("cirrus-kv 0.1.0")
         return 0
 
     case "help", "--help", "-h":
@@ -163,21 +163,21 @@ func run() -> Int32 {
 
 func printUsage() {
     let usage = """
-    icloud-kv — iCloud Key-Value Store CLI
+    cirrus-kv — iCloud Key-Value Store CLI
 
     Usage:
-      icloud-kv get <key>                       Get string value (exit 1 if not found)
-      icloud-kv get-json <key>                   Get JSON value
-      icloud-kv set <key> <value>                Set string value
-      icloud-kv set-json <key> <json>            Set JSON value
-      icloud-kv delete <key>                     Delete key
-      icloud-kv list [--prefix <p>]              List keys
-      icloud-kv cas <key> <expected> <new>       Compare-and-swap (- for nil expected)
-      icloud-kv sync                             Force synchronize
-      icloud-kv budget                           Show key count + byte estimate
-      icloud-kv watch <key> [--timeout <s>]      Block until key changes (default 30s)
-      icloud-kv version                          Print version
-      icloud-kv help                             Show this help
+      cirrus-kv get <key>                       Get string value (exit 1 if not found)
+      cirrus-kv get-json <key>                   Get JSON value
+      cirrus-kv set <key> <value>                Set string value
+      cirrus-kv set-json <key> <json>            Set JSON value
+      cirrus-kv delete <key>                     Delete key
+      cirrus-kv list [--prefix <p>]              List keys
+      cirrus-kv cas <key> <expected> <new>       Compare-and-swap (- for nil expected)
+      cirrus-kv sync                             Force synchronize
+      cirrus-kv budget                           Show key count + byte estimate
+      cirrus-kv watch <key> [--timeout <s>]      Block until key changes (default 30s)
+      cirrus-kv version                          Print version
+      cirrus-kv help                             Show this help
 
     Exit codes:
       0  success

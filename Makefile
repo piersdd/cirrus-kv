@@ -2,7 +2,7 @@
 
 # Override with your Developer ID Application identity
 SIGNING_IDENTITY ?= Developer ID Application
-BUNDLE_ID := cc.gen4.icloud-kv
+BUNDLE_ID := cc.gen4.cirrus-kv
 INSTALL_DIR := $(HOME)/.local/bin
 
 build:
@@ -13,14 +13,14 @@ release:
 
 sign: release
 	codesign --force --sign "$(SIGNING_IDENTITY)" \
-		--entitlements icloud-kv.entitlements \
+		--entitlements cirrus-kv.entitlements \
 		--identifier "$(BUNDLE_ID)" \
-		.build/release/icloud-kv
+		.build/release/cirrus-kv
 
 install: sign
 	mkdir -p "$(INSTALL_DIR)"
-	cp .build/release/icloud-kv "$(INSTALL_DIR)/icloud-kv"
-	@echo "Installed to $(INSTALL_DIR)/icloud-kv"
+	cp .build/release/cirrus-kv "$(INSTALL_DIR)/cirrus-kv"
+	@echo "Installed to $(INSTALL_DIR)/cirrus-kv"
 
 clean:
 	swift package clean
